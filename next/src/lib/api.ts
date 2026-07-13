@@ -14,10 +14,11 @@ export type NoteListResponse = {
   total: number;
 };
 axios.defaults.baseURL = "https://next-v1-notes-api.goit.study";
-const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
-export async function getNotes() {
-  await delay(2000);
-  const responce = await axios.get<NoteListResponse>("/notes");
+
+export async function getNotes(categoryId?: string) {
+  const responce = await axios.get<NoteListResponse>("/notes", {
+    params: { categoryId },
+  });
   return responce.data;
 }
 
