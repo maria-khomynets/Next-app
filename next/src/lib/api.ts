@@ -25,3 +25,14 @@ export async function getSingleNote(id: string) {
   const responce = await axios.get<Note>(`/notes/${id}`);
   return responce.data;
 }
+export async function getUser(id: string) {
+  const response = await fetch(
+    `https://jsonplaceholder.typicode.com/users/${id}`,
+  );
+
+  if (!response.ok) {
+    return null;
+  }
+
+  return response.json();
+}
