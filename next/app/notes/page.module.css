@@ -1,0 +1,13 @@
+/* app/notes/page.module.css */
+
+.title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #111827;
+}
+
+@media (prefers-color-scheme: dark) {
+  .title {
+    color: #f9fafb;
+  }
+}

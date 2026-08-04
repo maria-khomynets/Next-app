@@ -1,0 +1,114 @@
+/* app/home.module.css */
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 24px;
+  padding: 80px 24px;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.badge {
+  display: inline-block;
+  padding: 6px 14px;
+  background-color: #eff6ff;
+  color: #2563eb;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.title {
+  font-size: 44px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  color: #111827;
+}
+
+.title span {
+  color: #2563eb;
+}
+
+.subtitle {
+  font-size: 18px;
+  line-height: 1.7;
+  color: #6b7280;
+  max-width: 520px;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+.primary {
+  padding: 14px 28px;
+  background-color: #2563eb;
+  color: #ffffff;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.primary:hover {
+  background-color: #1d4ed8;
+  transform: translateY(-1px);
+}
+
+.secondary {
+  padding: 14px 28px;
+  background-color: #f3f4f6;
+  color: #374151;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+
+.secondary:hover {
+  background-color: #e5e7eb;
+}
+
+@media (prefers-color-scheme: dark) {
+  .badge {
+    background-color: #1e3a8a;
+    color: #bfdbfe;
+  }
+
+  .title {
+    color: #f9fafb;
+  }
+
+  .subtitle {
+    color: #9ca3af;
+  }
+
+  .secondary {
+    background-color: #1f2937;
+    color: #d1d5db;
+  }
+
+  .secondary:hover {
+    background-color: #374151;
+  }
+}
+
+@media (max-width: 640px) {
+  .title {
+    font-size: 32px;
+  }
+
+  .hero {
+    padding: 48px 20px;
+  }
+}

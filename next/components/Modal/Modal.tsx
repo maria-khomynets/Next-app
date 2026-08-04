@@ -3,6 +3,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import css from "./Modal.module.css";
 
 type Props = {
   children: React.ReactNode;
@@ -14,10 +15,12 @@ const Modal = ({ children }: Props) => {
   const close = () => router.back();
 
   return (
-    <div>
-      <div>
+    <div className={css.overlay}>
+      <div className={css.dialog}>
         {children}
-        <button onClick={close}>Close</button>
+        <button className={css.close} onClick={close}>
+          Close
+        </button>
       </div>
     </div>
   );

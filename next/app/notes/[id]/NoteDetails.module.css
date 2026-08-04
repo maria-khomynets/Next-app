@@ -1,0 +1,89 @@
+/* app/notes/[id]/NoteDetails.module.css */
+
+.wrapper {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 28px;
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+.back {
+  padding: 10px 18px;
+  background-color: #eff6ff;
+  color: #2563eb;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: background-color 0.2s ease;
+}
+
+.back:hover {
+  background-color: #dbeafe;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 12px;
+}
+
+.content {
+  font-size: 16px;
+  line-height: 1.7;
+  color: #4b5563;
+  margin-bottom: 20px;
+}
+
+.date {
+  font-size: 13px;
+  color: #9ca3af;
+}
+
+.status {
+  padding: 16px;
+  background-color: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  color: #6b7280;
+}
+
+@media (prefers-color-scheme: dark) {
+  .wrapper {
+    background-color: #111827;
+    border-color: #374151;
+  }
+
+  .back {
+    background-color: #1e3a8a;
+    color: #bfdbfe;
+  }
+
+  .back:hover {
+    background-color: #1e40af;
+  }
+
+  .title {
+    color: #f9fafb;
+  }
+
+  .content {
+    color: #d1d5db;
+  }
+
+  .date {
+    color: #6b7280;
+  }
+
+  .status {
+    background-color: #1f2937;
+    border-color: #374151;
+    color: #9ca3af;
+  }
+}

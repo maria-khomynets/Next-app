@@ -1,0 +1,39 @@
+/* components/NoteItem/NoteItem.module.css */
+
+.item {
+  padding: 16px 18px;
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.item:hover {
+  border-color: #2563eb;
+  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.12);
+  transform: translateY(-2px);
+}
+
+.link {
+  font-size: 17px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.link:hover {
+  color: #2563eb;
+}
+
+@media (prefers-color-scheme: dark) {
+  .item {
+    background-color: #111827;
+    border-color: #374151;
+  }
+
+  .link {
+    color: #e5e7eb;
+  }
+}
