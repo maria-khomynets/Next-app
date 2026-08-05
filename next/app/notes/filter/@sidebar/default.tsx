@@ -6,6 +6,7 @@ export default async function NotesSidebar() {
   const categories = await getCategories();
   return (
     <>
+      <Link href="/notes/action/create">Create note</Link>
       <p className={css.title}>Categories</p>
       <ul className={css.list}>
         <li className={css.item}>
