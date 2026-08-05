@@ -1,11 +1,13 @@
 // components/NoteForm/NoteForm.tsx
 
 "use client";
+
 import { useState } from "react";
+import { Category, createNote } from "@/src/lib/api";
 import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { Category, createNote } from "@/src/lib/api";
+import { useNoteDraftStore } from "@/src/lib/stores/noteStore";
 import css from "./NoteForm.module.css";
 
 type Props = {
@@ -15,9 +17,24 @@ type Props = {
 const NoteForm = ({ categories }: Props) => {
   const router = useRouter();
   const [error, setError] = useState("");
-  const mutate = useMutation({
+  const { draft, setDraft, clearDraft } = useNoteDraftStore();
+
+  const handleChange = (
+    event: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >,
+  ) => {
+    const { name, value } = event.target;
+    setDraft({
+      ...draft,
+      ...(name === "category" ? { categoryId: value } : { [name]: value }),
+    });
+  };
+
+  const { mutate, isPending } = useMutation({
     mutationFn: createNote,
     onSuccess: () => {
+      clearDraft();
       router.push("/notes/filter/all");
     },
     onError: () => {
@@ -37,7 +54,7 @@ const NoteForm = ({ categories }: Props) => {
       return;
     }
 
-    mutate.mutate({ title, content, categoryId });
+    mutate({ title, content, categoryId });
   };
 
   return (
@@ -53,6 +70,8 @@ const NoteForm = ({ categories }: Props) => {
             id="title"
             type="text"
             name="title"
+            defaultValue={draft?.title}
+            onChange={handleChange}
             required
             minLength={1}
             placeholder="Замовлення в Starbucks"
@@ -67,6 +86,8 @@ const NoteForm = ({ categories }: Props) => {
             className={css.textarea}
             id="content"
             name="content"
+            defaultValue={draft?.content}
+            onChange={handleChange}
             required
             minLength={1}
             placeholder="Опис нотатки..."
@@ -77,7 +98,14 @@ const NoteForm = ({ categories }: Props) => {
           <label className={css.label} htmlFor="category">
             Category
           </label>
-          <select className={css.select} id="category" name="category" required>
+          <select
+            className={css.select}
+            id="category"
+            name="category"
+            defaultValue={draft?.categoryId}
+            onChange={handleChange}
+            required
+          >
             {categories.map((category) => (
               <option key={category.id} value={category.id}>
                 {category.name}
@@ -89,12 +117,8 @@ const NoteForm = ({ categories }: Props) => {
         {error && <p className={css.error}>{error}</p>}
 
         <div className={css.actions}>
-          <button
-            className={css.submit}
-            type="submit"
-            disabled={mutate.isPending}
-          >
-            {mutate.isPending ? "Creating..." : "Create"}
+          <button className={css.submit} type="submit" disabled={isPending}>
+            {isPending ? "Creating..." : "Create"}
           </button>
           <Link className={css.cancel} href="/notes/filter/all">
             Cancel
