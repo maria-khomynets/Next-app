@@ -71,6 +71,24 @@
   margin-top: 6px;
 }
 
+.error {
+  padding: 10px 14px;
+  background-color: #fef2f2;
+  color: #dc2626;
+  border: 1px solid #fecaca;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+@media (prefers-color-scheme: dark) {
+  .error {
+    background-color: #450a0a;
+    color: #fca5a5;
+    border-color: #7f1d1d;
+  }
+}
+
 .submit {
   flex: 1;
   padding: 12px 20px;
@@ -97,6 +115,9 @@
 }
 
 .cancel {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   padding: 12px 20px;
   background-color: #f3f4f6;
   color: #374151;
@@ -104,6 +125,7 @@
   border-radius: 10px;
   font-size: 15px;
   font-weight: 600;
+  text-decoration: none;
   cursor: pointer;
   transition: background-color 0.2s ease;
 }
