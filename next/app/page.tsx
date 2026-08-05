@@ -1,9 +1,16 @@
 import Link from "next/link";
 import css from "./home.module.css";
 
+import Image from "next/image";
 export default function Home() {
   return (
     <section className={css.hero}>
+      <Image
+        src="https://picsum.photos/seed/picsum/300/300"
+        alt="test"
+        width={300}
+        height={300}
+      />
       <span className={css.badge}>Ваш простір для нотаток</span>
       <h1 className={css.title}>
         Вітаємо у <span>NoteHub</span>
